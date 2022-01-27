@@ -13,4 +13,20 @@
  *= require_tree .
  *= require_self
  */
-@import 'bootstrap/scss/bootstrap';
+
+a.dark-link {
+  color: #17a2b8;
+  text-decoration: underline;
+}
+
+a.light-link {
+  color: white;
+}
+
+.dark-link:hover {
+  color: #17a2b8;
+}
+
+.light-link:hover {
+  color: #17a2b8;
+}

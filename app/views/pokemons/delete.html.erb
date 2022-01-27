@@ -1,0 +1,24 @@
+<div class="row d-flex justify-content-md-center mb-5">
+  <div class="d-flex justify-content-md-center col-md-3 col-xs-12">
+    <h3><%= @title %></h3>
+  </div>
+</div>
+<div class="row d-flex justify-content-md-center mb-5">
+<div class="col-md-5">
+  <%= form_with model: @pokemon, :method => 'delete' do |f| %>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="message">Are you sure you want to permanently delete this Pokemon?</label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="name">Name:</label>
+        <%= f.object.name.capitalize()%>
+      </div>
+    </div>
+    <%= f.submit "Delete", class: "btn btn-primary" %>
+    <%= link_to('Cancel', pokemons_path, :class => "btn btn-danger")%>
+  <% end %>
+</div>
+</div>

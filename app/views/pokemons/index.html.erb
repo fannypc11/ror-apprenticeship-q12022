@@ -1,0 +1,36 @@
+<div class="row d-flex justify-content-between align-items-center mb-5">
+  <div class="col-md-8 col-xs-12">
+    <%= form_tag(pokemons_path, method: 'get') do %>
+        <div class="input-group col-md-12">
+          <%= text_field_tag(:search, params[:search], class: 'form-control') %>
+          <span>
+            <%= submit_tag("Search", :class => "btn btn-outline-primary ml-3") %>
+          </span>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-md-2 col-xs-12 d-flex justify-content-center align-items-center pt-3 pb-3">
+    <%= link_to('New Pokemon', new_pokemon_path, :class => "btn btn-outline-info")%>
+  </div>
+</div>
+
+<div class="pokemons-container">
+  <% @pokemons.each_with_index do |pokemon, index| %>
+        <div class="card">
+        <img class="card-img-top" src=<%= pokemon.image %> alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= pokemon.name.capitalize()%></h5>
+          <p class="card-text">Base exprecience: <%= pokemon.base_experience%></p>
+          <p class="card-text">Height: <%= pokemon.height%></p>
+
+          <div class="mb-3">
+            <% pokemon.poketypes.each do |poketype| %>
+              <span class="badge badge-warning"><%= poketype.name %></span>
+            <%end%>
+          </div>
+          <%= link_to('Edit', edit_pokemon_path(pokemon.id), :class => "btn btn-outline-primary")%>
+          <%= link_to('Delete', delete_pokemon_path(pokemon.id), :class => "btn btn-outline-danger")%>
+        </div>
+        </div>
+  <% end %>
+</div>

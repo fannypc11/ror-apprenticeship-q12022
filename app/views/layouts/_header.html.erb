@@ -1,0 +1,23 @@
+<!-- As a heading -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class='col-xl-10 col-lg-9 col-md-8 col-sm-7 col-6'>
+    <%= link_to('Pokemon App', pokemons_path, :class => "navbar-brand h1")%>
+  </div>
+  <div class='col-xl-2 col-lg-3 col-md-4 col-sm-5 col-6 d-flex justify-content-between'>
+  <% if user_signed_in? %>
+    <div>
+      <%= link_to current_user.email, edit_user_registration_path, class: "light-link" %>
+    </div>
+    <div>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "light-link" %>
+    </div>
+  <% else %>
+    <div>
+      <%= link_to "Sign Up", new_user_registration_path, class: "light-link" %>
+    </div>
+    <div>
+      <%= link_to "Login", new_user_session_path, class: "light-link" %>
+    </div>
+  <% end %>
+  </div>
+</nav>
